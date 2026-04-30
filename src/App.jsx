@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { AppProvider } from './AppContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Timeline from './components/Timeline';
-import Checklist from './components/Checklist';
-import Chatbot from './components/Chatbot';
 import './index.css';
+
+const Timeline = lazy(() => import('./components/Timeline'));
+const Checklist = lazy(() => import('./components/Checklist'));
+const Chatbot = lazy(() => import('./components/Chatbot'));
+
+/**
+ * Main Application Component
+ * Wraps the app in AppProvider and uses React.lazy for efficient component loading.
+ * @returns {JSX.Element} The rendered App
+ */
 
 function App() {
   return (
@@ -13,9 +20,11 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <Timeline />
-        <Checklist />
-        <Chatbot />
+        <Suspense fallback={<div style={{ textAlign: 'center', padding: '2rem' }}>Loading...</div>}>
+          <Timeline />
+          <Checklist />
+          <Chatbot />
+        </Suspense>
       </main>
       <footer>
         <p>Built for Hack2Skill PromptWars 🚀</p>

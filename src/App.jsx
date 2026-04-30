@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { AppProvider } from './AppContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';

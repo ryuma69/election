@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useAppContext } from '../AppContext';
 import { GoogleGenAI } from '@google/genai';
 
@@ -25,15 +25,22 @@ const qaData = {
  */
 const Chatbot = () => {
   const { t, language } = useAppContext();
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(() => [{ text: t.botIntro, sender: 'bot' }]);
   const [isTyping, setIsTyping] = useState(false);
   const [apiKey, setApiKey] = useState('');
   const [customQuestion, setCustomQuestion] = useState('');
   const chatEndRef = useRef(null);
 
-  // Initialize bot intro on language change
+  // Update initial message when language changes
   useEffect(() => {
-    setMessages([{ text: t.botIntro, sender: 'bot' }]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setMessages(prev => {
+      // Only replace the intro if the first message is a bot message (naive check)
+      if (prev.length > 0 && prev[0].sender === 'bot') {
+        return [{ text: t.botIntro, sender: 'bot' }, ...prev.slice(1)];
+      }
+      return prev;
+    });
   }, [language, t.botIntro]);
 
   useEffect(() => {

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Guide | Your Election Assistant</title>
+    <meta name="description" content="An interactive guide to help you understand the election process, timelines, and important steps.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Empowering Your <span class="highlight">Vote</span></h1>
+            <p class="hero-subtitle">Navigate the election process with clarity. Understand the timeline, know your rights, and make your voice heard.</p>
+            <a href="#timeline" class="btn-primary">Explore Timeline</a>
+        </div>
+        <div class="hero-graphics">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </header>
+
+    <main>
+        <section id="timeline" class="timeline-section">
+            <div class="container">
+                <h2 class="section-title">The Election Journey</h2>
+                <div class="timeline">
+                    <!-- Steps will be injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="assistant" class="assistant-section">
+            <div class="container">
+                <div class="assistant-container glass-panel">
+                    <div class="assistant-header">
+                        <div class="avatar">🤖</div>
+                        <div>
+                            <h3 class="assistant-title">Civic Guide Assistant</h3>
+                            <p class="assistant-status">Online and ready to help</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-window" id="chatWindow">
+                        <div class="message bot-message">
+                            Hi there! I'm your Civic Guide. I can help you understand the election process. What would you like to know?
+                        </div>
+                    </div>
+
+                    <div class="quick-questions" id="quickQuestions">
+                        <!-- Questions injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built for Hack2Skill PromptWars 🚀</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
